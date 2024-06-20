@@ -15,9 +15,12 @@
                 <div class="forgot-pass">
                     <a href="#">Forgot your password?</a>
                 </div>
-                <button type="submit" class="btn" (click)="onSubmit()">Login</button>
+                <!-- <button type="submit" class="btn" (click)="onSubmit1()">Login</button> -->
                 <div class="signup-link">
-                    <a href="#">Signup</a>
+                    <a (click)="onSubmit1()">Login</a>
+                </div>
+                <div class="signup-link">
+                    <a (click)="onSubmit()">Signup</a>
                 </div>
             </form>
         </div>

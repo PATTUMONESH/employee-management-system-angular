@@ -1,39 +1,170 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
+<h1 style="color: navy; text-align: center;">Employee Registration Form</h1>
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <div>
+      <div>
+    <form [formGroup]="firstFormGroup" class="row" (ngSubmit)="onSubmit1()">
+      <ng-template matStepLabel>Basic Details</ng-template>
+      
+      <mat-form-field class="col-md-4">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="userName" />
+      </mat-form-field>
+      
+      <mat-form-field class="col-md-4">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password"/>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput type="password" formControlName="confirmPassword" />
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email"/>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="tel" formControlName="phoneNumber"/>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>City</mat-label>
+        <input matInput type="text" formControlName="city"/>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>State</mat-label>
+        <input matInput type="text" formControlName="state"/>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Postal Code</mat-label>
+        <input matInput type="number" formControlName="postalCode"/>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Select Your Country</mat-label>
+        <select matNativeControl formControlName="country">
+          <option value=""></option>
+          <option value="us">United States</option>
+          <option value="uk">U.K</option>
+          <option value="india">India</option>
+        </select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext type="submit">Next</button>
+      </div>
+   
+    </form>
+  </div>
+  </div>
+  </mat-step>
+  
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup" class="row" (ngSubmit)="onSubmit2()">
+      <ng-template matStepLabel>Professional Experience</ng-template>
+      <mat-form-field class="col-md-4">
+        <mat-label>Mention Experience In Years</mat-label>
+        <input matInput type="number" formControlName="experienceInYears" required>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Mention Organization Name</mat-label>
+        <input matInput formControlName="previousOrgName" required>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Mention Domain</mat-label>
+        <input matInput formControlName="domain" required>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Mention Technologies Names Covered In Previous Company</mat-label>
+        <input matInput formControlName="technologiesCovered" required>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+        <mat-label>Mention Previous Company Address</mat-label>
+        <input matInput formControlName="address" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>&nbsp;
+        <button mat-button matStepperNext type="submit">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup" class="row">
+      <ng-template matStepLabel>Preview</ng-template>
+      <mat-card class="example-card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Chihuahua</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{longText}}</p>
+        </mat-card-content>
+        <mat-card-footer class="example-card-footer">
+          <mat-chip-set aria-label="Chihuahua traits">
+            <mat-chip>charming</mat-chip>
+            <mat-chip>graceful</mat-chip>
+            <mat-chip>sassy</mat-chip>
+          </mat-chip-set>
+        </mat-card-footer>
+      </mat-card>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>&nbsp;
+        <button mat-button matStepperNext type="submit">Next</button>
+      </div>
+    </form>
+  </mat-step> -->
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup" class="row" (ngSubmit)="onSubmit3()">
+      <ng-template matStepLabel>Preview</ng-template>
+      <mat-card class="example-card" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title><b style="color: navy;">Preview</b></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Username:</strong> {{ firstFormGroup.get('userName')?.value }}</p>
+          <p><strong>Email:</strong> {{ firstFormGroup.get('email')?.value }}</p>
+          <p><strong>Phone Number:</strong> {{ firstFormGroup.get('phoneNumber')?.value }}</p>
+          <p><strong>City:</strong> {{ firstFormGroup.get('city')?.value }}</p>
+          <p><strong>State:</strong> {{ firstFormGroup.get('state')?.value }}</p>
+          <p><strong>Postal Code:</strong> {{ firstFormGroup.get('postalCode')?.value }}</p>
+          <p><strong>Country:</strong> {{ firstFormGroup.get('country')?.value }}</p>
+          <p><strong>Experience In Years:</strong> {{ secondFormGroup.get('experienceInYears')?.value }}</p>
+          <p><strong>Previous Organization Name:</strong> {{ secondFormGroup.get('previousOrgName')?.value }}</p>
+          <p><strong>Domain:</strong> {{ secondFormGroup.get('domain')?.value }}</p>
+          <p><strong>Technologies Covered:</strong> {{ secondFormGroup.get('technologiesCovered')?.value }}</p>
+          <p><strong>Previous Company Address:</strong> {{ secondFormGroup.get('address')?.value }}</p>
+        </mat-card-content>
+      </mat-card>
+     
+      <div>
+        <br>
+        
+        <button mat-button matStepperPrevious>Back</button>&nbsp;
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    
+    <form [formGroup]="fourthFormGroup" class="row" (ngSubmit)="onSubmit()">
       <ng-template matStepLabel>Done</ng-template>
       <p>You are now done.</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button matStepperPrevious>Back</button>&nbsp;
+        <button mat-button (click)="stepper.reset()">Reset</button>&nbsp;
+        <button mat-button type="submit" style="background-color: lightpink;">Submit</button>
       </div>
-    </mat-step>
-  </mat-stepper>
-  
+    </form>
+  </mat-step>
+</mat-stepper>

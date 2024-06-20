@@ -13,10 +13,11 @@ export class LoginComponent {
 constructor(private router:Router){
 
 }
-
-
 onSubmit() {
   this.router.navigate(['/dashboard'])
+}
+onSubmit1() {
+  this.router.navigate(['/layout'])
 }
 
 }
